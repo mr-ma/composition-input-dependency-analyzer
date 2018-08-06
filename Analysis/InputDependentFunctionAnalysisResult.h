@@ -78,12 +78,12 @@ public:
         return true;
     }
 
-    bool isControlDependent(llvm::Instruction* I) const
+    bool isControlDependent(llvm::Instruction* I) const override
     {
         return true;
     }
 
-    bool isDataDependent(llvm::Instruction* I) const
+    bool isDataDependent(llvm::Instruction* I) const override
     {
         return true;
     }

@@ -9,13 +9,18 @@ add_library(Transforms MODULE
 
 install(DIRECTORY ./ DESTINATION /usr/local/include/input-dependency
         FILES_MATCHING PATTERN "*.h")
-install(TARGETS Transforms LIBRARY DESTINATION /usr/local/lib)
+install(TARGETS Transforms
+        ARCHIVE DESTINATION lib
+        LIBRARY DESTINATION lib
+        RUNTIME DESTINATION bin)
+
 
 link_directories(analysis)
 
 # Use C++11 to compile our pass (i.e., supply -std=c++11).
 target_compile_features(Transforms PRIVATE cxx_range_for cxx_auto_type)
 target_link_libraries(Transforms "${LIBRARY_OUTPUT_PATH}/libInputDependency.so")
+target_link_libraries(Transforms InputDependency)
 
 # LLVM is (typically) built with no C++ RTTI. We need to match that;
 # otherwise, we'll get linker errors about missing RTTI data.

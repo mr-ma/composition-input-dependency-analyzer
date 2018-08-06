@@ -1,4 +1,4 @@
-add_library(InputDependency MODULE
+add_library(InputDependency SHARED
     BasicBlockAnalysisResult.cpp
     CLibraryInfo.cpp
     DependencyAnaliser.cpp
@@ -43,7 +43,11 @@ add_library(InputDependency MODULE
 
 install(DIRECTORY ./ DESTINATION /usr/local/include/input-dependency
         FILES_MATCHING PATTERN "*.h")
-install(TARGETS InputDependency LIBRARY DESTINATION /usr/local/lib)
+install(TARGETS InputDependency
+        ARCHIVE DESTINATION lib
+        LIBRARY DESTINATION lib
+        RUNTIME DESTINATION bin)
+
 
 # Use C++11 to compile our pass (i.e., supply -std=c++11).
 target_compile_features(InputDependency PRIVATE cxx_range_for cxx_auto_type)

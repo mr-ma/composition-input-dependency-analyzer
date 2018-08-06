@@ -1231,7 +1231,7 @@ FunctionCallDepInfo FunctionAnaliser::getFunctionCallDepInfo(llvm::Function* F) 
 
 bool FunctionAnaliser::changeFunctionCall(const llvm::Instruction* callInstr, llvm::Function* oldF, llvm::Function* newF)
 {
-    m_analiser->changeFunctionCall(const_cast<llvm::Instruction*>(callInstr), oldF, newF);
+    return m_analiser->changeFunctionCall(const_cast<llvm::Instruction*>(callInstr), oldF, newF);
 }
 
 DependencyAnaliser::GlobalVariableDependencyMap

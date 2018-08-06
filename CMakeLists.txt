@@ -1,9 +1,15 @@
 cmake_minimum_required(VERSION 3.1)
 
-find_package(LLVM REQUIRED CONFIG)
+find_package(LLVM 6.0 REQUIRED CONFIG)
 add_definitions(${LLVM_DEFINITIONS})
 
 include_directories(${LLVM_INCLUDE_DIRS})
+if ($ENV{CLION_IDE})
+    include_directories("/usr/include/llvm-6.0/")
+endif ()
+
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DNDEBUG")
+
 include_directories(${CMAKE_CURRENT_LIST_DIR})
 
 link_directories(${LLVM_LIBRARY_DIRS})

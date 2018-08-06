@@ -75,7 +75,7 @@ protected:
     void updateAliasesDependencies(llvm::Value* val, llvm::Instruction* elInstr, const ValueDepInfo& info, ValueDependencies& valueDependencies) override;
     void updateAliasingOutArgDependencies(llvm::Value* val, const ValueDepInfo& info, int arg_idx = -1) override;
     void updateModAliasesDependencies(llvm::StoreInst* storeInst, const ValueDepInfo& info) override;
-    void updateRefAliasesDependencies(llvm::Instruction* instr, const ValueDepInfo& info);
+    void updateRefAliasesDependencies(llvm::Instruction* instr, const ValueDepInfo& info) override;
     void markCallbackFunctionsForValue(llvm::Value* value) override;
     void removeCallbackFunctionsForValue(llvm::Value* value) override;
     DepInfo getLoadInstrDependencies(llvm::LoadInst* instr) override;

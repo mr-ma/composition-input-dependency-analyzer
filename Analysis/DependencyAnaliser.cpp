@@ -57,7 +57,7 @@ llvm::Function* getCalledFunctionFromCalledValue(llvm::Value* calledValue)
     if (auto* constExpr = llvm::dyn_cast<llvm::ConstantExpr>(calledValue)) {
         llvm::Instruction* instr = constExpr->getAsInstruction();
         for (auto op = instr->op_begin(); op != instr->op_end(); ++op) {
-            if (F = llvm::dyn_cast<llvm::Function>(*op)) {
+            if (llvm::isa<llvm::Function>(*op)) {
                 break;
             }
         }
