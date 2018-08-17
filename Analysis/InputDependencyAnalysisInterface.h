@@ -2,6 +2,7 @@
 
 #include <memory>
 #include <unordered_map>
+#include <functional>
 
 namespace llvm {
 class AAResults;
@@ -24,9 +25,7 @@ public:
 public:
     InputDependencyAnalysisInterface() = default;
 
-    virtual ~InputDependencyAnalysisInterface()
-    {
-    }
+    virtual ~InputDependencyAnalysisInterface() = default;
 
 public:
     virtual void run() = 0;
