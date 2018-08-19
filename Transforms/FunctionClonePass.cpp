@@ -1,8 +1,8 @@
 #include "FunctionClonePass.h"
 #include "Utils.h"
 
-#include "Analysis/FunctionAnaliser.h"
-#include "Analysis/InputDepConfig.h"
+#include "FunctionAnaliser.h"
+#include "InputDepConfig.h"
 
 #include "llvm/ADT/SCCIterator.h"
 #include "llvm/Analysis/CallGraph.h"

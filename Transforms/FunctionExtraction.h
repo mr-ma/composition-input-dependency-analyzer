@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Analysis/Statistics.h"
-#include "Analysis/InputDependencyStatistics.h"
-#include "Analysis/InputDependencyAnalysisPass.h"
+#include "Statistics.h"
+#include "InputDependencyStatistics.h"
+#include "InputDependencyAnalysisPass.h"
 
 #include "llvm/Pass.h"
 

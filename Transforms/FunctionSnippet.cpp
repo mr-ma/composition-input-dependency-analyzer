@@ -1,7 +1,7 @@
 #include "FunctionSnippet.h"
 
 #include "Utils.h"
-#include "Analysis/BasicBlocksUtils.h"
+#include "BasicBlocksUtils.h"
 
 #include "llvm/IR/Instructions.h"
 #include "llvm/IR/IRBuilder.h"

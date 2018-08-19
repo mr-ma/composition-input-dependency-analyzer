@@ -1,9 +1,9 @@
 #pragma once
 
 #include "FunctionClone.h"
-#include "Analysis/InputDependencyAnalysisPass.h"
-#include "Analysis/Statistics.h"
-#include "Analysis/InputDependencyStatistics.h"
+#include "InputDependencyAnalysisPass.h"
+#include "Statistics.h"
+#include "InputDependencyStatistics.h"
 
 #include "llvm/Pass.h"
 #include <memory>

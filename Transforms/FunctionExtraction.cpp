@@ -17,10 +17,10 @@
 
 #include "FunctionSnippet.h"
 #include "Utils.h"
-#include "Analysis/FunctionAnaliser.h"
-#include "Analysis/InputDependentFunctionAnalysisResult.h"
-#include "Analysis/BasicBlocksUtils.h"
-#include "Analysis/InputDepConfig.h"
+#include "FunctionAnaliser.h"
+#include "InputDependentFunctionAnalysisResult.h"
+#include "BasicBlocksUtils.h"
+#include "InputDepConfig.h"
 
 #include <vector>
 #include <memory>

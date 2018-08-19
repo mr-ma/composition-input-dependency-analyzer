@@ -13,8 +13,9 @@
 #include "llvm/IR/LegacyPassManager.h"
 #include "llvm/Transforms/IPO/PassManagerBuilder.h"
 
-#include "json/json.hpp"
+#include "nlohmann/json.hpp"
 #include <fstream>
+#include <iomanip>
 
 namespace {
 

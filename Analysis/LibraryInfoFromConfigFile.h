@@ -1,7 +1,7 @@
 #pragma once
 
 #include "LibraryInfoCollector.h"
-#include "json/json.hpp"
+#include "nlohmann/json.hpp"
 
 namespace input_dependency {
 

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Analysis/FunctionCallDepInfo.h"
+#include "FunctionCallDepInfo.h"
 #include "llvm/Transforms/Utils/ValueMapper.h"
 
 #include <vector>

@@ -3,9 +3,10 @@
 #include "llvm/IR/Module.h"
 #include "llvm/IR/Function.h"
 
-#include "json/json.hpp"
+#include "nlohmann/json.hpp"
 #include <fstream>
 #include <iostream>
+#include <iomanip>
 
 using json = nlohmann::json;
 
