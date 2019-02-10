@@ -99,7 +99,7 @@ add_library(InputDependency SHARED
 add_library(input-dependency::InputDependency ALIAS InputDependency)
 
 
-find_package(LLVM 6.0 REQUIRED CONFIG)
+find_package(LLVM 7.0 REQUIRED CONFIG)
 find_package(nlohmann_json REQUIRED)
 
 target_include_directories(InputDependency

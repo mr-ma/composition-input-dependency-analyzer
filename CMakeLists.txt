@@ -10,8 +10,8 @@ add_definitions(-DHAVE_LLVM)
 add_definitions(-DENABLE_CFG)
 
 if ($ENV{CLION_IDE})
-    include_directories("/usr/include/llvm-6.0/")
-    include_directories("/usr/include/llvm-c-6.0/")
+    include_directories("/usr/include/llvm-7.0/")
+    include_directories("/usr/include/llvm-c-7.0/")
 endif ()
 add_subdirectory(Analysis)  # Use your pass name here.
 add_subdirectory(Transforms)  # Use your pass name here.

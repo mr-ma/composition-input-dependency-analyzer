@@ -17,7 +17,7 @@ add_library(Transforms SHARED
 
 add_library(input-dependency::Transforms ALIAS Transforms)
 
-find_package(LLVM 6.0 REQUIRED CONFIG)
+find_package(LLVM 7.0 REQUIRED CONFIG)
 
 target_include_directories(Transforms
         PUBLIC
