@@ -1,11 +1,13 @@
 #include "input-dependency/Transforms/FunctionExtraction.h"
-
+#include "llvm/IR/GlobalValue.h"
 #include "llvm/ADT/SCCIterator.h"
 #include "llvm/Analysis/CallGraph.h"
 #include "llvm/Analysis/PostDominators.h"
 #include "llvm/IR/BasicBlock.h"
 #include "llvm/IR/Function.h"
 #include "llvm/IR/Instructions.h"
+#include "llvm/IR/IRBuilder.h"
+#include "llvm/IR/InstrTypes.h"
 #include "llvm/IR/Instruction.h"
 #include "llvm/IR/IntrinsicInst.h"
 #include "llvm/IR/Module.h"
@@ -583,10 +585,38 @@ bool FunctionExtractionPass::runOnModule(llvm::Module& M)
     m_coverageStatistics->reportInputDepCoverage();
     m_extractionStatistics->report();
 
+ 
+
+    if(extracted_functions.size()==0){
+      //inject a dummy function
+      llvm::Function *SourceFunction=M.getFunction("main");
+//      std::string f_name = unique_name_generator::get().get_unique(m_block->getParent()->getName());
+ //   llvm::Function* new_F = llvm::Function::Create(type,
+ //                                                  llvm::GlobalValue::LinkageTypes::ExternalLinkage,
+  //                                                 f_name,
+   //                                                m_block->getModule());
+      std::string fname= "dummyFunc";
+      llvm::LLVMContext &Ctx = SourceFunction->getContext();
+      llvm::Type* return_type =  llvm::Type::getVoidTy(Ctx);
+      std::vector<llvm::Type*> arg_types;
+      llvm::ArrayRef<llvm::Type*> params(arg_types);
+      llvm::FunctionType* type = llvm::FunctionType::get(return_type,params , false);
+
+      //llvm::FunctionType* type = create_function_type(Ctx, m_used_values, return_type, arg_index_to_value);
+      llvm::Function *DummyFunction=llvm::Function::Create(type,llvm::GlobalValue::LinkageTypes::InternalLinkage,fname, SourceFunction->getParent());
+      llvm::IRBuilder<> Builder(Ctx);
+      llvm::BasicBlock *BB = llvm::BasicBlock::Create(Ctx, "entry", DummyFunction);
+      Builder.SetInsertPoint(BB);
+      Builder.CreateRetVoid();
+
+      Builder.SetInsertPoint(SourceFunction->getEntryBlock().getFirstNonPHIOrDbg());
+      llvm::CallInst *call = Builder.CreateCall(DummyFunction);
+    }
+
+
     //Utils::check_module(M);
     return modified;
 }
-
 const std::unordered_set<llvm::Function*>& FunctionExtractionPass::get_extracted_functions() const
 {
     return m_extracted_functions;
